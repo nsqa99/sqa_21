@@ -31,29 +31,37 @@ public class SignUp extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
         HttpSession ses = request.getSession();
-        String username, fullname, pass1, address, phone, identity;
+        String username, fullname, pass1, pass2, address, phone, identity, areaId;
         username = request.getParameter("usernameSign");
         fullname = request.getParameter("fullnameSign");
         identity = request.getParameter("identity");
         pass1 = request.getParameter("passSign");
+        pass2 = request.getParameter("rePassSign");
         address = request.getParameter("addressSign");
         phone = request.getParameter("phoneSign");
-
+        areaId = request.getParameter("area_check");
+        if (!pass1.equals(pass2)) {
+        	ses.setAttribute("Error", "Mật khẩu nhập lại không khớp");
+            RequestDispatcher dis = request.getRequestDispatcher("/View/signup.jsp");
+            dis.forward(request, response);
+            return;
+        }
         String pass = DigestUtils.md5Hex(pass1);
         user u = new user();
         userDAO ud = new userDAO();
-        if (ud.checkUsername(username)) {
+        
+        if (!ud.checkUsername(username)) {
             u.setUsername(username);
             u.setFullname(fullname);
             u.setPassword(pass);
             u.setAddress(address);
             u.setSdt(phone);
             u.setIdentityNum(Long.parseLong(identity));
-            u.setAreaId(1);
+            u.setAreaId(Long.parseLong(areaId));
             ud.addUser(u);
             response.sendRedirect("signup_success");
         } else {
-            ses.setAttribute("UserTonTai", ud.checkUsername(username));
+            ses.setAttribute("Error", "Tên tài khoản đã tồn tại");
             RequestDispatcher dis = request.getRequestDispatcher("/View/signup.jsp");
             dis.forward(request, response);
         }

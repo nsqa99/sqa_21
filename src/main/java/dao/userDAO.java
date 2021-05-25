@@ -90,6 +90,7 @@ public class userDAO extends dao {
             ps.setString(1, username);
             ResultSet rs = ps.executeQuery();
             if (!rs.next()) {
+            	
                 result = false;
             }
         } catch (Exception e) {

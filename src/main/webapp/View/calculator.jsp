@@ -18,7 +18,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/calculator.css" type="text/css">
-        <title>Tinh tien dien</title>
+        <title>Tính tiền điện</title>
     </head>
 
     <body>
@@ -33,9 +33,7 @@
                 <li class="nav-list__item">
                     <a class="tab-button active" href="<%=request.getContextPath()%>/calculator">Tính tiền điện</a>
                 </li>
-                <li class="nav-list__item">
-                    <a class="tab-button" href="#">Đóng tiền điện</a>
-                </li>
+                
                 <li class="nav-list__item">
                     <a class="tab-button" href="#">Tin tức</a>
                 </li>

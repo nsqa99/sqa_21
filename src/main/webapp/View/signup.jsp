@@ -12,7 +12,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>signup</title>
+        <title>Đăng kí</title>
         <meta charset="utf-8">
 	<meta charset="viewport" content="width=device-width,initial-scale=1.0">
 	<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -31,11 +31,13 @@
                                     <form action="SignUp" method="post">
 					<div class="form sign-up">
                                             <%
-                                                if(session.getAttribute("UserTonTai")!=null){
-                                                session.removeAttribute("UserTonTai");
+                                                if(session.getAttribute("Error")!=null){
+                                                
                                             %>
-                                            <p style="font-size: 14px; color: red;">*Tên tài khoản đã tồn tại</p>
-                                            <% } %>
+                                            <p style="font-size: 14px; color: red;">*<%=session.getAttribute("Error") %></p>
+                                            
+                                            <%session.removeAttribute("Error"); 
+                                            } %>
 						<div class="input-group">
 							<i class='bx bxs-user'></i>
                                                         <input name="usernameSign" type="text" placeholder="Tên đăng nhập" required="required">
@@ -47,23 +49,42 @@
 						</div>
 						<div class="input-group">
 							<i class='bx bxs-user'></i>
-							<input name="identity" pattern="[0-9]{9,12}" title="Chứng minh thư nhân dân có tối thiểu 9 chữ số và tối đa 12 chữ số" type="text" placeholder="CMTND/CCCD" required="required">
+							<input name="identity" pattern="(?:[0-9]{9}|[0-9]{12})" title="Chứng minh thư nhân dân phải bao gồm 9 hoặc 12 chữ số" type="text" placeholder="CMTND/CCCD" required="required">
 						</div>
 						<div class="input-group">
 							<i class='bx bxs-lock-alt' ></i>
-                                                        <input name="passSign" type="password" placeholder="Mật khẩu" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Mật khẩu có độ dài tối thiểu 8 kí tự và phải bao gồm ít nhất 1 kí tự in  hoa, 1 kí tự thường và 1 chữ số" required="required">
+                            <input name="passSign" type="password" placeholder="Mật khẩu" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Mật khẩu có độ dài tối thiểu 8 kí tự và phải bao gồm ít nhất 1 kí tự in  hoa, 1 kí tự thường và 1 chữ số" required="required">
 						</div>
-                                                
+                        <div class="input-group">
+							<i class='bx bxs-lock-alt' ></i>
+                            <input name="rePassSign" type="password" placeholder="Nhập lại mật khẩu" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Mật khẩu có độ dài tối thiểu 8 kí tự và phải bao gồm ít nhất 1 kí tự in  hoa, 1 kí tự thường và 1 chữ số" required="required">
+						</div>                        
 						
-                                                <div class="input-group">
+                        <div class="input-group">
 							<i class='bx bxs-user'></i>
 							<input name="addressSign" type="text" placeholder="Địa chỉ" required="required">
 						</div>
                                             <div class="input-group">
 							<i class='bx bxs-user'></i>
-							<input name="phoneSign" type="text" placeholder="Số điện thoại" required="required">
+							<input name="phoneSign" pattern="[0-9]{10}" title="Số điện thoại phải bao gồm 10 chữ số" type="text" placeholder="Số điện thoại" required="required">
 						</div>
-                                            <input type="submit" value="Đăng ký" style="width: 100%;background-color: var(--primary-color); color: white; height: 50px; cursor: pointer; border: none">
+						<div class="input-group" style="display: flex; justify-content: space-between; width: 100%">
+							<div style="width: 50%">
+								
+								<label for="check-rural" >
+									<input name="area_check" checked type="radio" id="check-rural" value="1" required="required">Thành phố</label>
+							</div>
+							<div style="width: 50%">
+								
+								<label for="check-urban" >
+									<input name="area_check" type="radio" id="check-urban" value="2" required="required">
+									Nông thôn</label>
+							</div>
+								
+							
+							
+						</div>
+                       	<input type="submit" value="Đăng ký" style="width: 100%;background-color: var(--primary-color); color: white; height: 50px; cursor: pointer; border: none">
 						<p>
 							<span>
 								Đã có tài khoản sẵn sàng

@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>login</title>
+        <title>Đăng nhập</title>
         <meta charset="utf-8">
         <meta charset="viewport" content="width=device-width,initial-scale=1.0">
         <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -77,18 +77,17 @@
                             <div class="form sign-in">
                                 <%
                                     if (session.getAttribute("loginError") != null) {
-                                        System.out.println("here is the fucking error");
                                         session.removeAttribute("loginError");
                                 %>
                                 <p style="font-size: 14px; color: red;">*Tên đăng nhập hoặc mật khẩu bị sai, vui lòng thử lại</p>
                                 <% }%>
                                 <div class="input-group">
                                     <i class='bx bxs-user'></i>
-                                    <input name="usernamelog" type="text" placeholder="username" required="required">
+                                    <input name="usernamelog" type="text" placeholder="Tên đăng nhập" required="required">
                                 </div>
                                 <div class="input-group">
                                     <i class='bx bxs-lock-alt' ></i>
-                                    <input name="passwordlog" type="password" placeholder="password" required="required">
+                                    <input name="passwordlog" type="password" placeholder="Mật khẩu" required="required">
                                 </div>
                                 <input type="submit" value="Đăng nhập"style="width: 100%;background-color: var(--primary-color); color: white; height: 50px; cursor: pointer; border: none">
 

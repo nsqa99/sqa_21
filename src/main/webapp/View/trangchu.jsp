@@ -27,9 +27,7 @@
                 <li class="nav-list__item">
                     <a class="tab-button" href="<%=request.getContextPath()%>/calculator">Tính tiền điện</a>
                 </li>
-                <li class="nav-list__item">
-                    <a class="tab-button" href="#">Đóng tiền điện</a>
-                </li>
+                
                 <li class="nav-list__item">
                     <a class="tab-button" href="#">Tin tức</a>
                 </li>
