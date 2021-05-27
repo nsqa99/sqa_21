@@ -28,7 +28,7 @@ public class ElecInfoDAOTest {
 
 	@Test
 	public void testBulkInsert() throws SQLException {
-		String time = "06/2021";
+		String time = "07/2021";
 		List<user> users = new userDAO().findAll();
 		int initNumOfRecords = dao.findAll().size();
 		int numOfNewRecords = 0;

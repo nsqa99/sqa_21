@@ -76,6 +76,7 @@ public class userDAO extends dao {
 				ps2.setLong(3, user.getIdUser());
 				ps2.executeUpdate();
 			}
+			con.commit();
 		} catch (SQLException e) {
 			con.rollback();
 		} finally {

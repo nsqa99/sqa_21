@@ -41,24 +41,24 @@ public class ElecInfoDAO extends dao {
 		}
 	}
 	
-	public void bulkInsertTest(String time) throws SQLException {
-		con.setAutoCommit(false);
-		String query = "INSERT INTO electricity_info VALUES(null, ?, ?, 0, 0, 'NP');";
-
-		PreparedStatement ps = con.prepareStatement(query);
-		List<user> users = userDao.findAll();
-//            for (user u : users) {
-//                System.out.println(u.getIdUser());
-//                System.out.println(u.getFullname());
-//            }
-		for (user u : users) {
-			ps.setLong(1, u.getIdUser());
-			ps.setString(2, time);
-			ps.executeUpdate();
-		}
-		con.rollback();
-		con.setAutoCommit(true);
-	}
+//	public void bulkInsertTest(String time) throws SQLException {
+//		con.setAutoCommit(false);
+//		String query = "INSERT INTO electricity_info VALUES(null, ?, ?, 0, 0, 'NP');";
+//
+//		PreparedStatement ps = con.prepareStatement(query);
+//		List<user> users = userDao.findAll();
+////            for (user u : users) {
+////                System.out.println(u.getIdUser());
+////                System.out.println(u.getFullname());
+////            }
+//		for (user u : users) {
+//			ps.setLong(1, u.getIdUser());
+//			ps.setString(2, time);
+//			ps.executeUpdate();
+//		}
+//		con.rollback();
+//		con.setAutoCommit(true);
+//	}
 
 	public ElecInfo findById(long id) throws SQLException {
 		ElecInfo info = new ElecInfo();

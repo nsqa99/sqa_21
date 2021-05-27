@@ -30,7 +30,7 @@ public class ElecPriceDAO extends dao {
             }
             ps.executeUpdate();
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            ex.printStackTrace(); 
         }
     }
     
