@@ -40,7 +40,7 @@ public class UserDAOTest {
 	}
 	
 	@Test
-	public void testAddUserSuccess() throws SQLException {
+	public void testAddUserSuccess() throws Exception {
 		con.setAutoCommit(false);
 		user u = new user(123456789, "Test Fullname", "Test addr", "0123124123", 1, "abc", "alo");
 		dao.addUser(u);
@@ -51,7 +51,7 @@ public class UserDAOTest {
 	}
 	
 	@Test(expected = Exception.class)
-	public void testAddUserFailWithWrongAreaId() throws SQLException {
+	public void testAddUserFailWithWrongAreaId() throws Exception {
 		con.setAutoCommit(false);
 		user u = new user(123456789, "Test Fullname", "Test addr", "0123124123", 3, "abc", "alo");
 		dao.addUser(u);

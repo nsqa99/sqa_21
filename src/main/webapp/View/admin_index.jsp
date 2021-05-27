@@ -158,9 +158,9 @@
                                             <td><%=info.getUserAddr()%></td>
                                             <td><%=info.getUserPhoneNum()%></td>
                                             <td><%=info.getMonth()%></td>
-                                            <td><%=info.getConsumedAmount()%></td>
-                                            <td><%=String.format("%,.0f", info.getPrice())%></td>
-                                            <td><%=info.getPaymentStatus().equalsIgnoreCase("NP") ? 0 : String.format("%,.0f", info.getPrice())%></td>
+                                            <td id="consumed-amount-<%=info.getUserid() + "-" + info.getMonth()%>"><%=info.getConsumedAmount()%></td>
+                                            <td id="debt"><%=String.format("%,.0f", info.getPrice())%></td>
+                                            <td id="paid-amount"><%=info.getPaymentStatus().equalsIgnoreCase("NP") ? 0 : String.format("%,.0f", info.getPrice())%></td>
                                             <td>
                                                 <div class="d-flex justify-content-between">
                                                     <button
@@ -170,6 +170,7 @@
                                                         <%}%>
                                                         data-toggle="modal"
                                                         data-target="#updateModal"
+                                                        id="btn-update-<%=info.getId()%>"
                                                         data-id="<%=info.getUserid()%>"
                                                         data-fuck="<%=info.getId()%>"
                                                         data-name="<%=info.getUserFullName()%>"
@@ -184,6 +185,7 @@
                                                         <% if (info.getPaymentStatus().equalsIgnoreCase("p")) { %>
                                                         disabled="true"
                                                         <%}%>
+                                                        id="btn-handin-<%=info.getId()%>"
                                                         data-toggle="modal"
                                                         data-target="#payModal"
                                                         data-id="<%=info.getUserid()%>"
@@ -262,10 +264,11 @@
                             class="btn btn-secondary"
                             type="button"
                             data-dismiss="modal"
+                            aria-label='Cancel'
                             >
                             Hủy
                         </button>
-                        <a class="btn btn-primary" href="<%=request.getContextPath()%>/logout">Đăng xuất</a>
+                        <a class="btn btn-primary" href="<%=request.getContextPath()%>/logout" aria-label='Logout'>Đăng xuất</a>
                     </div>
                 </div>
             </div>
@@ -357,10 +360,11 @@
                                 class="btn btn-secondary"
                                 type="button"
                                 data-dismiss="modal"
+                                aria-label="Cancel"
                                 >
                                 Hủy
                             </button>
-                            <button type="submit" class="btn btn-primary">Cập nhật</button>
+                            <button type="submit" class="btn btn-primary" aria-label="Update">Cập nhật</button>
                         </div>
                     </form>
                 </div>
@@ -464,10 +468,11 @@
                             class="btn btn-secondary"
                             type="button"
                             data-dismiss="modal"
+                            aria-label="Cancel"
                             >
                             Hủy
                         </button>
-                        <button type="submit" class="btn btn-primary" href="#">Đóng tiền</button>
+                        <button type="submit" class="btn btn-primary" aria-label="Handin" href="#">Đóng tiền</button>
                     </div>
                 </form>
             </div>
@@ -518,10 +523,11 @@
                             class="btn btn-secondary"
                             type="button"
                             data-dismiss="modal"
+                            aria-label="Cancel"
                             >
                             Hủy
                         </button>
-                        <button type="submit" class="btn btn-primary">Thêm</button>
+                        <button type="submit" class="btn btn-primary" aria-label="Add">Thêm</button>
                     </div>
                 </form>
             </div>

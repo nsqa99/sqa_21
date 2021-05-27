@@ -7,7 +7,6 @@ package controller;
 
 import dao.userDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -58,7 +57,12 @@ public class SignUp extends HttpServlet {
             u.setSdt(phone);
             u.setIdentityNum(Long.parseLong(identity));
             u.setAreaId(Long.parseLong(areaId));
-            ud.addUser(u);
+            try {
+				ud.addUser(u);
+//            	ud.addUserTest(u);
+			} catch (Exception e) {
+				response.sendRedirect("show_Signup");
+			}
             response.sendRedirect("signup_success");
         } else {
             ses.setAttribute("Error", "Tên tài khoản đã tồn tại");

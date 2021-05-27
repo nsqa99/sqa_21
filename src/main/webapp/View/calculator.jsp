@@ -58,7 +58,7 @@
         </div>
         <div class="tab">
             <button id="<%=request.getParameter("type") == null || request.getParameter("type").equals("1") ? "defaultOpen" : ""%>" class="tablinks" onclick="openTab(event, 'urban')">Thành phố</button>
-            <button id="<%=request.getParameter("type") != null && request.getParameter("type").equals("2") ? "defaultOpen" : ""%>" class="tablinks" onclick="openTab(event, 'rural')">Nông thôn</button>
+            <button name="btnR" id="<%=request.getParameter("type") != null && request.getParameter("type").equals("2") ? "defaultOpen" : ""%>" class="tablinks" onclick="openTab(event, 'rural')">Nông thôn</button>
             <!--<form action="<%= request.getContextPath()%>/calculator" method="post">
                 <input type="number" name="type" value="1" hidden>
                 
@@ -95,7 +95,7 @@
                         </tr>
                         <tr>
                             <td></td>
-                            <td><input class="btn" type="submit" value="Tính toán"></td>
+                            <td><input class="btn" id="btn-urban" type="submit" value="Tính toán"></td>
                         </tr>
                     </table>
 
@@ -203,7 +203,7 @@
                         </tr>
                         <tr>
                             <td></td>
-                            <td><input class="btn" type="submit" value="Tính toán"></td>
+                            <td><input class="btn" id="btn-rural" type="submit" value="Tính toán"></td>
                         </tr>
                     </table>
 

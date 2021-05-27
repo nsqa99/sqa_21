@@ -78,11 +78,12 @@ $('#payModal').on('show.bs.modal', function(e) {
 });
 
 $('#configModal').on('show.bs.modal', function(e) {
-    var id = $(e.relatedTarget).data('id');
+    var id = $(e.relatedTarget).data('idP');
     var area = $(e.relatedTarget).data('area');
     var levels = $(e.relatedTarget).data('levels');
     
     $(e.currentTarget).find('#idConfig').val(id);
+    console.log($(e.currentTarget).find('#idConfig'))
     $(e.currentTarget).find('#configAddr').val(area);
     levels.map((level, index) => {
         $(e.currentTarget).find('#level' + (index + 1)).val(level);

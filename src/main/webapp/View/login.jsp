@@ -79,7 +79,7 @@
                                     if (session.getAttribute("loginError") != null) {
                                         session.removeAttribute("loginError");
                                 %>
-                                <p style="font-size: 14px; color: red;">*Tên đăng nhập hoặc mật khẩu bị sai, vui lòng thử lại</p>
+                                <p id="error_msg" style="font-size: 14px; color: red;">*Tên đăng nhập hoặc mật khẩu bị sai, vui lòng thử lại</p>
                                 <% }%>
                                 <div class="input-group">
                                     <i class='bx bxs-user'></i>

@@ -7,15 +7,12 @@ package controller;
 
 import dao.userDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import model.user;
 import org.apache.commons.codec.digest.DigestUtils;
 
@@ -52,7 +49,7 @@ public class LogIn extends HttpServlet {
                     response.sendRedirect(request.getContextPath() + "/admin");
                     return;
                 }
-                response.sendRedirect(request.getContextPath() + "/");
+                response.sendRedirect(request.getContextPath() + "/main");
         }
         else{
             request.getSession().setAttribute("loginError", "Error");

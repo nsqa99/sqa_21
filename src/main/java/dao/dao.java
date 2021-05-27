@@ -14,7 +14,7 @@ import java.sql.DriverManager;
  */
 public class dao {
 
-    public static Connection con;
+    public Connection con;
 
     public dao() {
         if (con == null) {

@@ -34,7 +34,7 @@
                                                 if(session.getAttribute("Error")!=null){
                                                 
                                             %>
-                                            <p style="font-size: 14px; color: red;">*<%=session.getAttribute("Error") %></p>
+                                            <p id="error_signup" style="font-size: 14px; color: red;">*<%=session.getAttribute("Error") %></p>
                                             
                                             <%session.removeAttribute("Error"); 
                                             } %>
@@ -57,7 +57,7 @@
 						</div>
                         <div class="input-group">
 							<i class='bx bxs-lock-alt' ></i>
-                            <input name="rePassSign" type="password" placeholder="Nhập lại mật khẩu" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Mật khẩu có độ dài tối thiểu 8 kí tự và phải bao gồm ít nhất 1 kí tự in  hoa, 1 kí tự thường và 1 chữ số" required="required">
+                            <input name="rePassSign" type="password" placeholder="Nhập lại mật khẩu" required="required">
 						</div>                        
 						
                         <div class="input-group">
@@ -71,20 +71,20 @@
 						<div class="input-group" style="display: flex; justify-content: space-between; width: 100%">
 							<div style="width: 50%">
 								
-								<label for="check-rural" >
-									<input name="area_check" checked type="radio" id="check-rural" value="1" required="required">Thành phố</label>
+								<label for="check-urban" >
+									<input name="area_check" checked type="radio" id="check-urban" value="1" required="required">Thành phố</label>
 							</div>
 							<div style="width: 50%">
 								
-								<label for="check-urban" >
-									<input name="area_check" type="radio" id="check-urban" value="2" required="required">
+								<label for="check-rural" >
+									<input name="area_check" type="radio" id="check-rural" value="2" required="required">
 									Nông thôn</label>
 							</div>
 								
 							
 							
 						</div>
-                       	<input type="submit" value="Đăng ký" style="width: 100%;background-color: var(--primary-color); color: white; height: 50px; cursor: pointer; border: none">
+                       	<input id="btnSignup" type="submit" value="Đăng ký" style="width: 100%;background-color: var(--primary-color); color: white; height: 50px; cursor: pointer; border: none">
 						<p>
 							<span>
 								Đã có tài khoản sẵn sàng

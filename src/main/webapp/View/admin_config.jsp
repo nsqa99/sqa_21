@@ -164,7 +164,7 @@
                                                     class="btn btn-primary mr-2"
                                                     data-toggle="modal"
                                                     data-target="#configModal"
-                                                    data-id="<%=price.getId()%>"
+                                                    data-idP="<%=price.getId()%>"
                                                     data-area="<%=price.getId() == 1 ? "Thành phố" : "Nông thôn"%>"
                                                     data-levels="<%=price.getLevels()%>"
                                                     >
