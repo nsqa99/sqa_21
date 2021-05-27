@@ -5,7 +5,7 @@
  */
 package controller;
 
-import dao.userDAO;
+import dao.UserDAO;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import model.user;
+import model.User;
 import org.apache.commons.codec.digest.DigestUtils;
 
 /**
@@ -46,8 +46,8 @@ public class SignUp extends HttpServlet {
             return;
         }
         String pass = DigestUtils.md5Hex(pass1);
-        user u = new user();
-        userDAO ud = new userDAO();
+        User u = new User();
+        UserDAO ud = new UserDAO();
         
         if (!ud.checkUsername(username)) {
             u.setUsername(username);

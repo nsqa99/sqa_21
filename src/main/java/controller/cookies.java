@@ -5,7 +5,7 @@
  */
 package controller;
 
-import dao.userDAO;
+import dao.UserDAO;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,7 +13,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.user;
+import model.User;
 
 /**
  *
@@ -32,7 +32,7 @@ public class cookies extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        userDAO userDao = new userDAO();
+        UserDAO userDao = new UserDAO();
         String username = "";
         String password = "";
         Cookie log = null;
@@ -48,7 +48,7 @@ public class cookies extends HttpServlet {
                     password = log.getValue();
                 }
             }
-            user u = userDao.checkLogin(username, password);
+            User u = userDao.checkLogin(username, password);
             if (u != null) {
                 if (u.getRole().equalsIgnoreCase("admin")) {
                     response.sendRedirect(request.getContextPath() + "/admin");

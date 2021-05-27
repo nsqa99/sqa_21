@@ -4,7 +4,7 @@
     Author     : admin
 --%>
 
-<%@page import="model.user"%>
+<%@page import="model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,10 +13,10 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <% 
-            if(session.getAttribute("user")!=null);
-            user u = new user();
-            u = (user) session.getAttribute("user");
+        <%
+        if(session.getAttribute("user")!=null);
+                    User u = new User();
+                    u = (User) session.getAttribute("user");
         %>
         <h1>Xin chào <%=u.getFullname()%></h1>
     </body>

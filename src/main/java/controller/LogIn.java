@@ -5,7 +5,7 @@
  */
 package controller;
 
-import dao.userDAO;
+import dao.UserDAO;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,7 +13,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.user;
+import model.User;
 import org.apache.commons.codec.digest.DigestUtils;
 
 /**
@@ -35,8 +35,8 @@ public class LogIn extends HttpServlet {
         String username=request.getParameter("usernamelog");
         String password=request.getParameter("passwordlog");
         String md5password= DigestUtils.md5Hex(password);
-        userDAO ud = new userDAO();
-        user u = ud.checkLogin(username, md5password);
+        UserDAO ud = new UserDAO();
+        User u = ud.checkLogin(username, md5password);
         if(u != null){
                 Cookie ck1 = new Cookie("username", username);
                 Cookie ck2 = new Cookie("password", md5password);

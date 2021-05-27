@@ -4,7 +4,7 @@
     Author     : nsqa
 --%>
 
-<%@page import="model.user"%>
+<%@page import="model.User"%>
 <%@page import="java.util.Locale"%>
 <%@page import="java.text.NumberFormat"%>
 <%@page import="model.ElectricityPrice"%>
@@ -40,7 +40,9 @@
                 <li class="nav-list__item">
                     <a class="tab-button" href="#">Liên hệ</a>
                 </li>
-                <% user u = (user) request.getSession().getAttribute("user");%>
+                <%
+                User u = (User) request.getSession().getAttribute("user");
+                %>
                 <div class="btn__header">
                     <li class="nav-list__item greet flex fl-middle">
                         <div>Xin chào</div>

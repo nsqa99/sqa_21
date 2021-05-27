@@ -14,7 +14,7 @@ import model.ElectricityPrice;
  *
  * @author nsqa
  */
-public class ElecPriceDAO extends dao {
+public class ElecPriceDAO extends BaseDAO {
 
     public ElecPriceDAO() {
         super();

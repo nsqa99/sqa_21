@@ -9,7 +9,7 @@ package model;
  *
  * @author admin
  */
-public class user {
+public class User {
     private long idUser;
     private long areaId;
     private String username;
@@ -17,16 +17,15 @@ public class user {
     private String fullname;
     private String sdt;
     private String address;
-    private String email;
     private String role;
     private long identityNum;
-    public user() {
+    public User() {
     }
     
     
 
 
-    public user(long idUser, long areaId, String username, String password, String fullname, String sdt, String address,
+    public User(long idUser, long areaId, String username, String password, String fullname, String sdt, String address,
 			 String role, long identityNum) {
 		this.idUser = idUser;
 		this.areaId = areaId;
@@ -44,7 +43,7 @@ public class user {
     
 
 
-	public user(long idUser, long areaId, String fullname, String sdt, String address, String role, long identityNum) {
+	public User(long idUser, long areaId, String fullname, String sdt, String address, String role, long identityNum) {
 		super();
 		this.idUser = idUser;
 		this.areaId = areaId;
@@ -58,7 +57,7 @@ public class user {
 
 
 
-	public user(long identityNum, String fullname, String address, String sdt, long areaId, String username,
+	public User(long identityNum, String fullname, String address, String sdt, long areaId, String username,
 			String password) {
 		super();
 		this.identityNum = identityNum;
@@ -99,15 +98,6 @@ public class user {
 
     public void setAreaId(long areaId) {
         this.areaId = areaId;
-    }
-
-    
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
     
 
@@ -162,7 +152,7 @@ public class user {
     
     @Override
     public boolean equals(Object obj) {
-    	user other = (user) obj;
+    	User other = (User) obj;
     	
     	return (this.idUser == other.idUser && this.areaId == other.areaId
     			&& this.fullname.equals(other.fullname) && this.address.equals(other.address)

@@ -12,11 +12,11 @@ import java.sql.DriverManager;
  *
  * @author admin
  */
-public class dao {
+public class BaseDAO {
 
     public Connection con;
 
-    public dao() {
+    public BaseDAO() {
         if (con == null) {
             String dbUrl = "jdbc:mysql://localhost:3306/electricity_payment?autoReconnect=true&useSSL=false";
             String dbClass = "com.mysql.jdbc.Driver";

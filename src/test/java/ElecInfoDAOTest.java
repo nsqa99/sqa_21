@@ -1,5 +1,5 @@
 import dao.ElecInfoDAO;
-import dao.userDAO;
+import dao.UserDAO;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 import model.ElecInfo;
 import static org.junit.Assert.*;
-import model.user;
+import model.User;
 import org.junit.Test;
 
 /*
@@ -23,7 +23,7 @@ import org.junit.Test;
  */
 public class ElecInfoDAOTest {
 	private final ElecInfoDAO dao = new ElecInfoDAO();
-	private final userDAO userDao = new userDAO();
+	private final UserDAO userDao = new UserDAO();
 	private final Connection con = dao.con;
 
 	public ElecInfoDAOTest() {
@@ -32,8 +32,8 @@ public class ElecInfoDAOTest {
 	@Test
 	public void testBulkInsert() throws SQLException {
 		String time = "07/2021";
-		List<user> users = userDao.findAll();
-		List<user> admins = users.stream().filter(u -> {
+		List<User> users = userDao.findAll();
+		List<User> admins = users.stream().filter(u -> {
 			return userDao.getRole(u.getIdUser()).equals("admin");
 		}).collect(Collectors.toList());
 		int numOfAdmin = admins.size();

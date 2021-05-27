@@ -11,20 +11,20 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import model.user;
+import model.User;
 
 /**
  *
  * @author admin
  */
-public class userDAO extends dao {
+public class UserDAO extends BaseDAO {
 
-	public userDAO() {
+	public UserDAO() {
 		super();
 	}
 
-	public user checkLogin(String username, String password) {
-		user u = new user();
+	public User checkLogin(String username, String password) {
+		User u = new User();
 		String sql = "SELECT * FROM account WHERE username = ? AND password = ?";
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -44,7 +44,7 @@ public class userDAO extends dao {
 		return null;
 	}
 
-	public void addUser(user user) throws SQLException {
+	public void addUser(User user) throws SQLException {
 
 		String[] names = user.getFullname().split(" ");
 		String sql1 = "INSERT INTO user values(null, ? , ?, null, ?, ?, ?, null, ?)";
@@ -159,8 +159,8 @@ public class userDAO extends dao {
 		return null;
 	}
 
-	public user findById(long id) {
-		user u = new user();
+	public User findById(long id) {
+		User u = new User();
 		u.setIdUser(id);
 		String query = "SELECT * FROM user WHERE userid=?";
 		try {
@@ -181,15 +181,15 @@ public class userDAO extends dao {
 		return u;
 	}
 
-	public List<user> findAll() {
-		List<user> us = new ArrayList<>();
+	public List<User> findAll() {
+		List<User> us = new ArrayList<>();
 
 		String query = "SELECT * FROM user";
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				user u = new user();
+				User u = new User();
 				u.setIdUser(rs.getLong("userid"));
 				u.setAddress(rs.getString("address"));
 				u.setFullname(rs.getString("lastName") + " " + rs.getString("firstName"));

@@ -10,16 +10,16 @@ import java.util.ArrayList;
 import java.util.List;
 import model.ElecInfo;
 import model.ElectricityPrice;
-import model.user;
+import model.User;
 import utils.Calculator;
 
 /**
  *
  * @author nsqa
  */
-public class ElecInfoDAO extends dao {
+public class ElecInfoDAO extends BaseDAO {
 
-	private userDAO userDao = new userDAO();
+	private UserDAO userDao = new UserDAO();
 
 	public ElecInfoDAO() {
 		super();
@@ -29,12 +29,12 @@ public class ElecInfoDAO extends dao {
 		String query = "INSERT INTO electricity_info VALUES(null, ?, ?, 0, 0, 'NP');";
 
 		PreparedStatement ps = con.prepareStatement(query);
-		List<user> users = userDao.findAll();
+		List<User> users = userDao.findAll();
 //            for (user u : users) {
 //                System.out.println(u.getIdUser());
 //                System.out.println(u.getFullname());
 //            }
-		for (user u : users) {
+		for (User u : users) {
 			if (userDao.getRole(u.getIdUser()).equals("user")) {
 				ps.setLong(1, u.getIdUser());
 				ps.setString(2, time);
@@ -74,7 +74,7 @@ public class ElecInfoDAO extends dao {
 			info.setConsumedAmount(rs.getInt("consumedAmount"));
 			info.setMonth(rs.getString("month_year"));
 			info.setPaymentStatus(rs.getString("paymentStatus"));
-			user u = userDao.findById(rs.getLong("userid"));
+			User u = userDao.findById(rs.getLong("userid"));
 			info.setUserAddr(u.getAddress());
 			info.setUserFullName(u.getFullname());
 			info.setUserid(rs.getLong("userid"));
@@ -118,7 +118,7 @@ public class ElecInfoDAO extends dao {
 			info.setConsumedAmount(rs.getInt("consumedAmount"));
 			info.setMonth(rs.getString("month_year"));
 			info.setPaymentStatus(rs.getString("paymentStatus"));
-			user u = userDao.findById(rs.getLong("userid"));
+			User u = userDao.findById(rs.getLong("userid"));
 			info.setUserAddr(u.getAddress());
 			info.setUserFullName(u.getFullname());
 			info.setUserPhoneNum(u.getSdt());

@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.ElecInfo;
 import model.ElectricityPrice;
-import model.user;
+import model.User;
 
 /**
  *
@@ -32,7 +32,7 @@ public class AdminController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		user u = (user) request.getSession().getAttribute("user");
+		User u = (User) request.getSession().getAttribute("user");
 		if (u != null && u.getRole().equalsIgnoreCase("admin"))
 			doPost(request, response);
 		else
