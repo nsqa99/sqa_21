@@ -49,7 +49,7 @@ public class LoginTest {
     public void testLoginAdminSuccess() {
     	WebDriverWait wait = new WebDriverWait(driver, 30);
     	WebElement txtUsername = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("usernamelog")));
-        txtUsername.sendKeys("nsqa");
+        txtUsername.sendKeys("admin");
         WebElement txtPassword = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("passwordlog")));
         txtPassword.sendKeys("1" + Keys.ENTER);
 

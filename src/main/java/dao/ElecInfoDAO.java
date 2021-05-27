@@ -35,12 +35,14 @@ public class ElecInfoDAO extends dao {
 //                System.out.println(u.getFullname());
 //            }
 		for (user u : users) {
-			ps.setLong(1, u.getIdUser());
-			ps.setString(2, time);
-			ps.executeUpdate();
+			if (userDao.getRole(u.getIdUser()).equals("user")) {
+				ps.setLong(1, u.getIdUser());
+				ps.setString(2, time);
+				ps.executeUpdate();
+			}
 		}
 	}
-	
+
 //	public void bulkInsertTest(String time) throws SQLException {
 //		con.setAutoCommit(false);
 //		String query = "INSERT INTO electricity_info VALUES(null, ?, ?, 0, 0, 'NP');";

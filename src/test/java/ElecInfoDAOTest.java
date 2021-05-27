@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
 import model.ElecInfo;
 import static org.junit.Assert.*;
 import model.user;
@@ -21,6 +23,7 @@ import org.junit.Test;
  */
 public class ElecInfoDAOTest {
 	private final ElecInfoDAO dao = new ElecInfoDAO();
+	private final userDAO userDao = new userDAO();
 	private final Connection con = dao.con;
 
 	public ElecInfoDAOTest() {
@@ -29,11 +32,15 @@ public class ElecInfoDAOTest {
 	@Test
 	public void testBulkInsert() throws SQLException {
 		String time = "07/2021";
-		List<user> users = new userDAO().findAll();
+		List<user> users = userDao.findAll();
+		List<user> admins = users.stream().filter(u -> {
+			return userDao.getRole(u.getIdUser()).equals("admin");
+		}).collect(Collectors.toList());
+		int numOfAdmin = admins.size();
 		int initNumOfRecords = dao.findAll().size();
 		int numOfNewRecords = 0;
 		if (users != null) {
-			numOfNewRecords = users.size();
+			numOfNewRecords = users.size() - numOfAdmin;
 		}
 
 		try {
@@ -257,11 +264,17 @@ public class ElecInfoDAOTest {
 				dao.calculateTotal(100, 1), "NP", 1, 1);
 		ElecInfo info4 = new ElecInfo(14, "Lê Thế Anh", "Hà Đông, Hà Nội", "1234567890", "05/2021", 200,
 				dao.calculateTotal(200, 1), "NP", 2, 1);
+		ElecInfo info5 = new ElecInfo(233, "Nguyễn Sỹ Quang Anh", "Hà Đông, Hà Nội", "1234567890", "06/2021", 0,
+				dao.calculateTotal(0, 1), "NP", 1, 1);
+		ElecInfo info6 = new ElecInfo(234, "Lê Thế Anh", "Hà Đông, Hà Nội", "1234567890", "06/2021", 0,
+				dao.calculateTotal(0, 1), "NP", 2, 1);
 		ArrayList<ElecInfo> expect = new ArrayList<>();
 		expect.add(info1);
 		expect.add(info2);
 		expect.add(info3);
 		expect.add(info4);
+		expect.add(info5);
+		expect.add(info6);
 		ArrayList<ElecInfo> results = dao.findAll();
 		assertEquals(expect, results);
 	}
