@@ -66,13 +66,47 @@ public class CalculatorTest {
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		WebElement cal = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Tính tiền điện")));
 		cal.click();
-		Thread.sleep(2000);
+		Thread.sleep(2000); 
 		WebElement amount = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("consumed-urban")));
 		amount.clear();
 		amount.sendKeys("-1");
 		WebElement btn = wait.until(ExpectedConditions.elementToBeClickable(By.id("btn-urban")));
 		btn.click();
 		String expect= "Value must be greater than or equal to 0.";
+        String actual = amount.getAttribute("validationMessage");
+
+        assertEquals(expect, actual);
+	}
+	
+	@Test
+	public void testCalculateBlankUrban() throws InterruptedException {
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+		WebElement cal = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Tính tiền điện")));
+		cal.click();
+		Thread.sleep(2000); 
+		WebElement amount = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("consumed-urban")));
+		amount.clear();
+		WebElement btn = wait.until(ExpectedConditions.elementToBeClickable(By.id("btn-urban")));
+		btn.click();
+		String expect= "Please fill out this field.";
+        String actual = amount.getAttribute("validationMessage");
+
+        assertEquals(expect, actual);
+	}
+	
+	@Test
+	public void testCalculateBlankRural() throws InterruptedException {
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+		WebElement cal = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Tính tiền điện")));
+		cal.click();
+		Thread.sleep(2000);
+		WebElement btnMove = wait.until(ExpectedConditions.elementToBeClickable(By.name("btnR")));
+		btnMove.click();
+		WebElement amount = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("consumed-rural")));
+		amount.clear();
+		WebElement btn = wait.until(ExpectedConditions.elementToBeClickable(By.id("btn-rural")));
+		btn.click();
+		String expect= "Please fill out this field.";
         String actual = amount.getAttribute("validationMessage");
 
         assertEquals(expect, actual);
@@ -106,7 +140,7 @@ public class CalculatorTest {
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		WebElement cal = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Tính tiền điện")));
 		cal.click();
-		Thread.sleep(2000);
+		Thread.sleep(2000); 
 		WebElement amount = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("consumed-urban")));
 		amount.clear();
 		amount.sendKeys("51");
@@ -132,7 +166,7 @@ public class CalculatorTest {
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		WebElement cal = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Tính tiền điện")));
 		cal.click();
-		Thread.sleep(2000);
+		Thread.sleep(2000); 
 		WebElement amount = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("consumed-urban")));
 		amount.clear();
 		amount.sendKeys("101");
@@ -153,7 +187,7 @@ public class CalculatorTest {
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		WebElement cal = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Tính tiền điện")));
 		cal.click();
-		Thread.sleep(2000);
+		Thread.sleep(2000); 
 		WebElement amount = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("consumed-urban")));
 		amount.clear();
 		amount.sendKeys("201");
@@ -197,7 +231,7 @@ public class CalculatorTest {
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		WebElement cal = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Tính tiền điện")));
 		cal.click();
-		Thread.sleep(2000);
+		Thread.sleep(2000); 
 		WebElement amount = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("consumed-urban")));
 		amount.clear();
 		amount.sendKeys("401");
@@ -220,7 +254,7 @@ public class CalculatorTest {
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		WebElement cal = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Tính tiền điện")));
 		cal.click();
-		Thread.sleep(2000);
+		Thread.sleep(2000); 
 		WebElement btnMove = wait.until(ExpectedConditions.elementToBeClickable(By.name("btnR")));
 		btnMove.click();
 		WebElement amount = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("consumed-rural")));
@@ -265,7 +299,7 @@ public class CalculatorTest {
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		WebElement cal = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Tính tiền điện")));
 		cal.click();
-		Thread.sleep(2000);
+		Thread.sleep(2000); 
 		WebElement btnMove = wait.until(ExpectedConditions.elementToBeClickable(By.name("btnR")));
 		btnMove.click();
 		WebElement amount = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("consumed-rural")));
@@ -289,7 +323,7 @@ public class CalculatorTest {
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		WebElement cal = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Tính tiền điện")));
 		cal.click();
-		Thread.sleep(2000);
+		Thread.sleep(2000); 
 		WebElement btnMove = wait.until(ExpectedConditions.elementToBeClickable(By.name("btnR")));
 //		btnMove.click();
 		executor.executeScript("arguments[0].click();", btnMove);
@@ -339,7 +373,7 @@ public class CalculatorTest {
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		WebElement cal = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Tính tiền điện")));
 		cal.click();
-		Thread.sleep(2000);
+		Thread.sleep(2000); 
 		WebElement btnMove = wait.until(ExpectedConditions.elementToBeClickable(By.name("btnR")));
 		btnMove.click();
 		WebElement amount = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("consumed-rural")));
@@ -363,7 +397,7 @@ public class CalculatorTest {
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		WebElement cal = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Tính tiền điện")));
 		cal.click();
-		Thread.sleep(2000);
+		Thread.sleep(2000); 
 		WebElement btnMove = wait.until(ExpectedConditions.elementToBeClickable(By.name("btnR")));
 		btnMove.click();
 		WebElement amount = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("consumed-rural")));
@@ -387,7 +421,7 @@ public class CalculatorTest {
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		WebElement cal = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Tính tiền điện")));
 		cal.click();
-		Thread.sleep(2000);
+		Thread.sleep(2000); 
 		WebElement btnMove = wait.until(ExpectedConditions.elementToBeClickable(By.name("btnR")));
 		btnMove.click();
 		WebElement amount = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("consumed-rural")));
