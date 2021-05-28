@@ -8,6 +8,8 @@ package dao;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
+
 import model.ElecInfo;
 import model.ElectricityPrice;
 import model.User;
@@ -27,7 +29,12 @@ public class ElecInfoDAO extends BaseDAO {
 
 	public void bulkInsert(String time) throws SQLException {
 		String query = "INSERT INTO electricity_info VALUES(null, ?, ?, 0, 0, 'NP');";
-
+		ArrayList<ElecInfo> infos = findAll();
+		for (ElecInfo i : infos) {
+			if (i.getMonth().equals("time")) {
+				return;
+			}
+		}
 		PreparedStatement ps = con.prepareStatement(query);
 		List<User> users = userDao.findAll();
 //            for (user u : users) {

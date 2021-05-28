@@ -82,6 +82,7 @@ public class AdminController extends HttpServlet {
 				infoDao.handInMoney(Integer.parseInt(idPay));
 			} catch (Exception e) {
 				response.sendRedirect(request.getContextPath() + "/admin");
+				return;
 			}
 			response.sendRedirect(request.getContextPath() + "/admin");
 			break;
@@ -94,6 +95,7 @@ public class AdminController extends HttpServlet {
 //				infoDao.bulkInsertTest(strings[1] + "/" + strings[0]);
 			} catch (SQLException e) {
 				response.sendRedirect("admin");
+				return;
 			}
 			response.sendRedirect("admin");
 			break;
